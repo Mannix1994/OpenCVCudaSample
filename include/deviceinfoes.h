@@ -1,10 +1,10 @@
-#ifndef DEVICEINFO_H
-#define DEVICEINFO_H
+#ifndef DEVICEINFOES_H
+#define DEVICEINFOES_H
 
 #include <vector>
 #include <iostream>
 #include <cstring>
-#include <cassert>
+#include <stdio.h>
 
 #include <cuda.h>
 #include <cuda_runtime.h>
@@ -47,7 +47,6 @@ class DeviceInfoes
         int getMaxTexture1D(int index = 0);
         void getMaxTexture2D(int maxTexture[2],int index = 0);
         void getMaxTexture3D(int maxTexture[3],int index = 0);
-        void getMaxTexture2DArray(int maxTextureArray[3],int index = 0);
         int getConcurrentKernels(int index = 0);
 
     protected:
@@ -57,4 +56,4 @@ class DeviceInfoes
         vector<cudaDeviceProp> deviceList;
 };
 
-#endif // DEVICEINFO_H
+#endif // DEVICEINFOES_H

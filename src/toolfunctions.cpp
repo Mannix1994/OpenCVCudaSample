@@ -12,3 +12,12 @@ void handleCudaError(const char *filename, const char *funcname,int linenumber,c
     }
 
 }
+
+void mAssert(const char *filename, const char *funcname,int linenumber,int expression)
+{
+    if(expression == 0){
+        cerr<<filename<<" Function:"<<
+        funcname<<" Line:"<<linenumber<<">>: Assert failed, illegal expression"<<endl;
+        exit(-1);
+    }
+}

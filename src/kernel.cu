@@ -12,9 +12,9 @@ __global__ void kernel(const PtrStepSz<uchar3> src,PtrStep<uchar3> dst)
     if(x < src.cols && y < src.rows)
     {
         uchar3 v = src(y,x);
-        //dst(y,x) = make_uchar3(v.y,v.x,v.z);    //粉色
+        dst(y,x) = make_uchar3(v.y,v.x,v.z);    //紫红色
         //dst(y,x) = make_uchar3(v.x,v.z,v.y);    //浅绿色
-        dst(y,x) = make_uchar3(v.y,v.z,v.x);
+        //dst(y,x) = make_uchar3(v.y,v.z,v.x);
     }
 }
 
@@ -26,11 +26,9 @@ void kernelCaller(const PtrStepSz<uchar3>& src,PtrStep<uchar3> dst,cudaStream_t 
     dim3 block(32,32);
     dim3 grid((src.cols + block.x - 1)/block.x,(src.rows + block.y - 1)/block.y);
 
-    Timer t;
     kernel<<<grid,block,0,stream>>>(src,dst);
     if(stream == 0)
         cudaDeviceSynchronize();
-    t.printSeconds();
 }
 
 /**
