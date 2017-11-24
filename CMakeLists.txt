@@ -6,7 +6,7 @@ project(cudatest)
 set(CMAKE_BUILD_TYPE "RELEASE")
 set(CUDA_USE_STATIC_CUDA_RUNTIME OFF) 		#这一句解决 cannot find -lopencv_dep_cudart
 # packages
-find_package(CUDA REQUIRED)
+find_package(CUDA)
 find_package(Ceres REQUIRED)
 #set(OpenCV_DIR "/usr/local/include") 	#修改了这一句，指定opencv头文件的路径
 find_package(OpenCV REQUIRED)
