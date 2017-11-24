@@ -27,6 +27,7 @@ void kernelCaller(const PtrStepSz<uchar3>& src,PtrStep<uchar3> dst,cudaStream_t 
     dim3 grid((src.cols + block.x - 1)/block.x,(src.rows + block.y - 1)/block.y);
 
     kernel<<<grid,block,0,stream>>>(src,dst);
+//    kernel<<<1024,1>>>(src,dst);
     if(stream == 0)
         cudaDeviceSynchronize();
 }

@@ -2,6 +2,7 @@
 
 DeviceInfoes::DeviceInfoes()
 {
+    deviceCount  = 0;
     refreshDeviceInfo();
 }
 
@@ -13,6 +14,7 @@ DeviceInfoes::~DeviceInfoes()
 /**
 * 刷新设备信息
 */
+
 void DeviceInfoes::refreshDeviceInfo()
 {
     HANDLECUDAERROR(cudaGetDeviceCount(&deviceCount));
