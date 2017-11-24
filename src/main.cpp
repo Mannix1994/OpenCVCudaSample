@@ -2,7 +2,7 @@
 #include "kernel.h"
 #include "timer.h"
 #include "toolfunctions.h"
-#include "deviceinfoes.h"
+#include "devicesinfo.h"
 
 int main()
 {
