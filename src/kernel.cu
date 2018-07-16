@@ -1,5 +1,6 @@
 #include "kernel.h"
 #include "timer.h"
+#include <device_launch_parameters.h>
 
 /**
 * 自定义核函数，在这个函数里面实现对每个像素的访问
@@ -9,6 +10,10 @@ __global__ void kernel(const PtrStepSz<uchar3> src,PtrStep<uchar3> dst)
     int x = threadIdx.x + blockIdx.x * blockDim.x;
     int y = threadIdx.y + blockIdx.y * blockDim.y;
 
+    uchar3 v = src(0,0);
+    if(x==0 && y==0){
+        printf("(%u,%u,%u)",v.x,v.y,v.z);
+    }
     if(x < src.cols && y < src.rows)
     {
         uchar3 v = src(y,x);
