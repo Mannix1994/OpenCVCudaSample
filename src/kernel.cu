@@ -7,19 +7,22 @@
 */
 __global__ void kernel(const PtrStepSz<uchar3> src,PtrStep<uchar3> dst)
 {
-    int x = threadIdx.x + blockIdx.x * blockDim.x;
-    int y = threadIdx.y + blockIdx.y * blockDim.y;
+    int i = threadIdx.x + blockIdx.x * blockDim.x; //行坐标
+    int j = threadIdx.y + blockIdx.y * blockDim.y; //列坐标
 
-    uchar3 v = src(0,0);
-    if(x==0 && y==0){
-        printf("(%u,%u,%u)",v.x,v.y,v.z);
+//    if(i>50){
+//        return;
+//    }
+    uchar3 vv = src(0,0);
+    if(i==0 && j==0){
+        printf("(%u,%u,%u)",vv.x,vv.y,vv.z);
     }
-    if(x < src.cols && y < src.rows)
+    if(i < src.cols && j < src.rows)
     {
-        uchar3 v = src(y,x);
-        dst(y,x) = make_uchar3(v.y,v.x,v.z);    //紫红色
-        //dst(y,x) = make_uchar3(v.x,v.z,v.y);    //浅绿色
-        //dst(y,x) = make_uchar3(v.y,v.z,v.x);
+        uchar3 v = src(i,j);
+        dst(i,j) = make_uchar3(v.y,v.x,v.z);    //紫红色
+        //dst(i,j) = make_uchar3(v.x,v.z,v.y);    //浅绿色
+        //dst(i,j) = make_uchar3(v.y,v.z,v.x);
     }
 }
 
