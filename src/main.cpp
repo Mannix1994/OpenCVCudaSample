@@ -2,13 +2,12 @@
 #include "kernel.h"
 #include "timer.h"
 #include "toolfunctions.h"
-#include "devicesinfo.h"
 
 typedef Point3_<unsigned char> Point3u;
 
 int main()
 {
-    Mat image = imread("lena.jpeg");
+    Mat image = imread("lena.png");
     imshow("src",image);
     Vec3b a = image.at<Vec3b>(0,0);
     printf("(%u,%u,%u)\n",a[0],a[1],a[2]);
