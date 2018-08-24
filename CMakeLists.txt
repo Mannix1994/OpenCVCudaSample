@@ -6,7 +6,7 @@ project(cudatest)
 # packages
 find_package(CUDA REQUIRED)
 find_package(Ceres REQUIRED)
-set(OpenCV_DIR "/usr/local/opencv320/share/OpenCV") 	#修改了这一句，指定opencv头文件的路径
+set(OpenCV_DIR "/usr/local/opencv342/share/OpenCV") 	#修改了这一句，指定opencv头文件的路径
 find_package(OpenCV  3 REQUIRED)
 
 set(CUDA_USE_STATIC_CUDA_RUNTIME ON) 		#这一句解决 cannot find -lopencv_dep_cudart
