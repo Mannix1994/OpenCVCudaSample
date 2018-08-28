@@ -17,7 +17,7 @@ __global__ void kernel(const PtrStepSz<uchar3> src,PtrStep<uchar3> dst)
     if(i==0 && j==0){
         printf("(%u,%u,%u)",vv.x,vv.y,vv.z);
     }
-    if(i < src.cols && j < src.rows)
+    if(i < src.rows && j < src.cols)
     {
         uchar3 v = src(i,j);
         dst(i,j) = make_uchar3(v.y,v.x,v.z);    //紫红色
