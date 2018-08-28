@@ -13,8 +13,8 @@ __global__ void kernel(const PtrStepSz<uchar3> src,PtrStep<uchar3> dst)
 //    if(i>50){
 //        return;
 //    }
-    uchar3 vv = src(0,0);
-    if(i==0 && j==0){
+    if(i==15 && j==25){
+        uchar3 vv = src(i,j);
         printf("(%u,%u,%u)",vv.x,vv.y,vv.z);
     }
     if(i < src.rows && j < src.cols)

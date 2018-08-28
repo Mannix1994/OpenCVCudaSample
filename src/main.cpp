@@ -9,7 +9,7 @@ int main()
 {
     Mat image = imread("lena.png");
     imshow("src",image);
-    Vec3b a = image.at<Vec3b>(0,0);
+    Vec3b a = image.at<Vec3b>(15,25);
     printf("(%u,%u,%u)\n",a[0],a[1],a[2]);
     GpuMat gpuMat,output;
     gpuMat.upload(image);
