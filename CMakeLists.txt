@@ -8,7 +8,7 @@ set(CUDA_USE_STATIC_CUDA_RUNTIME OFF) 		#这一句解决 cannot find -lopencv_de
 find_package(CUDA REQUIRED)
 
 find_package(Ceres REQUIRED)
-set(OpenCV_DIR "/usr/local/opencv2413/share/OpenCV") 	#修改了这一句，指定opencv头文件的路径
+set(OpenCV_DIR "/usr/local/opencv342/share/OpenCV") 	#修改了这一句，指定opencv头文件的路径
 find_package(OpenCV REQUIRED)
 
 set(CMAKE_BUILD_TYPE "RELEASE")

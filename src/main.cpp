@@ -9,6 +9,7 @@ typedef Point3_<unsigned char> Point3u;
 int main()
 {
     Mat image = imread("lena.png");
+//    blur(image,image,Size(5,5));
     imshow("src",image);
     Vec3b a = image.at<Vec3b>(15,25);
     printf("(%u,%u,%u)\n",a[0],a[1],a[2]);

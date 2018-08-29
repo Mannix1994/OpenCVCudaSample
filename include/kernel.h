@@ -5,10 +5,10 @@
 #include <cuda.h>
 #include <cuda_runtime.h>
 #include <opencv2/opencv.hpp>
-#include <opencv2/gpu/gpu.hpp>
+//#include <opencv2/gpu/gpu.hpp>
 
 using namespace cv;
-using namespace cv::gpu;
+using namespace cv::cuda;
 
 void callKernel(const GpuMat& src,GpuMat& dst);
 
