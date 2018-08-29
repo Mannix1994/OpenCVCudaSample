@@ -32,10 +32,9 @@ __global__ void kernel(const PtrStepSz<uchar3> src,PtrStep<uchar3> dst)
 void kernelCaller(const PtrStepSz<uchar3>& src,PtrStep<uchar3> dst)
 {
     dim3 block(32,32);
-    dim3 grid((src.cols + block.x - 1)/block.x,(src.rows + block.y - 1)/block.y);
+    dim3 grid((src.rows + block.y - 1)/block.y,(src.cols + block.x - 1)/block.x);
 
     kernel<<<grid,block,0>>>(src,dst);
-//    kernel<<<1024,1>>>(src,dst);
 }
 
 /**
