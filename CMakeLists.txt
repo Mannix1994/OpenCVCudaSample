@@ -4,12 +4,13 @@ cmake_minimum_required(VERSION 2.8)
 project(cudatest)
 
 # packages
+set(CUDA_USE_STATIC_CUDA_RUNTIME OFF) 		#这一句解决 cannot find -lopencv_dep_cudart
 find_package(CUDA REQUIRED)
-find_package(Ceres REQUIRED)
-set(OpenCV_DIR "/usr/local/opencv342/share/OpenCV") 	#修改了这一句，指定opencv头文件的路径
-find_package(OpenCV  3 REQUIRED)
 
-set(CUDA_USE_STATIC_CUDA_RUNTIME ON) 		#这一句解决 cannot find -lopencv_dep_cudart
+find_package(Ceres REQUIRED)
+set(OpenCV_DIR "/usr/local/opencv2413/share/OpenCV") 	#修改了这一句，指定opencv头文件的路径
+find_package(OpenCV REQUIRED)
+
 set(CMAKE_BUILD_TYPE "RELEASE")
 # nvcc flags
 #set(CUDA_NVCC_FLAGS -gencode arch=compute_20,code=sm_20;-G;-g)

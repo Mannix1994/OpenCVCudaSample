@@ -5,6 +5,7 @@
 
 typedef Point3_<unsigned char> Point3u;
 
+
 int main()
 {
     Mat image = imread("lena.png");

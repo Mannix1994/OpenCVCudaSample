@@ -40,7 +40,7 @@ void kernelCaller(const PtrStepSz<uchar3>& src,PtrStep<uchar3> dst)
 /**
 * 外部函数调用这个函数(留给外部的唯一接口)，把GpuMat传进来
 */
-void callKernel(const GpuMat& src,GpuMat& dst,Stream& stream)
+void callKernel(const GpuMat& src,GpuMat& dst)
 {
     CV_Assert(src.type() == CV_8UC3);
     dst.create(src.size(),src.type());
