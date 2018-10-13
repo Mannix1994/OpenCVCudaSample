@@ -7,20 +7,20 @@
 */
 __global__ void kernel(const PtrStepSz<uchar3> src,PtrStep<uchar3> dst)
 {
-    int i = threadIdx.x + blockIdx.x * blockDim.x; //行坐标
-    int j = threadIdx.y + blockIdx.y * blockDim.y; //列坐标
+    int i = threadIdx.x + blockIdx.x * blockDim.x; //列坐标
+    int j = threadIdx.y + blockIdx.y * blockDim.y; //行坐标
 
 //    if(i>50){
 //        return;
 //    }
-    if(i==15 && j==25){
-        uchar3 vv = src(i,j);
+    if(i==25 && j==15){
+        uchar3 vv = src(j,i);
         printf("(%u,%u,%u)",vv.x,vv.y,vv.z);
     }
-    if(i < src.rows && j < src.cols)
+    if(j < src.rows && i < src.cols)
     {
-        uchar3 v = src(i,j);
-        dst(i,j) = make_uchar3(v.y,v.x,v.z);    //紫红色
+        uchar3 v = src(j,i);
+        dst(j,i) = make_uchar3(v.y,v.x,v.z);    //紫红色
         //dst(i,j) = make_uchar3(v.x,v.z,v.y);    //浅绿色
         //dst(i,j) = make_uchar3(v.y,v.z,v.x);
     }
@@ -31,8 +31,10 @@ __global__ void kernel(const PtrStepSz<uchar3> src,PtrStep<uchar3> dst)
 */
 void kernelCaller(const PtrStepSz<uchar3>& src,PtrStep<uchar3> dst)
 {
-    dim3 block(32,32);
-    dim3 grid((src.rows + block.y - 1)/block.y,(src.cols + block.x - 1)/block.x);
+    dim3 block(32,//一个block有多少列
+            32);//一个block多少行
+    dim3 grid((src.cols + block.x - 1)/block.x,// 列的方向的block数目
+            (src.rows + block.y - 1)/block.y);// 行的方向的block数目
 
     kernel<<<grid,block,0>>>(src,dst);
 }
