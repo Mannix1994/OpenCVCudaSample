@@ -30,7 +30,7 @@ __global__ void kernel(const PtrStepSz<uchar3> src,PtrStep<uchar3> dst)
 void kernelCaller(const PtrStepSz<uchar3>& src,PtrStep<uchar3> dst)
 {
     dim3 block(32,//一个block有多少列
-            32);//一个block多少行
+            32);//一个block有多少行
     dim3 grid((src.cols + block.x - 1)/block.x,// 列的方向的block数目
             (src.rows + block.y - 1)/block.y);// 行的方向的block数目
 
