@@ -21,8 +21,6 @@ __global__ void kernel(const PtrStepSz<uchar3> src,PtrStep<uchar3> dst)
     {
         uchar3 v = src(j,i);
         dst(j,i) = make_uchar3(v.y,v.x,v.z);    //紫红色
-        //dst(i,j) = make_uchar3(v.x,v.z,v.y);    //浅绿色
-        //dst(i,j) = make_uchar3(v.y,v.z,v.x);
     }
 }
 
